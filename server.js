@@ -28,15 +28,12 @@ app.use('/api', api);
 app.use("/mypage",mypage);
 
 // Catch all other routes and return the index file
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
   //res.sendFile("../dist/index.html'");
 });
 
-app.get("*",(req,res)=>{
-res.send("page not found");
 
-} )
 
 /**
  * Get port from environment and store in Express.

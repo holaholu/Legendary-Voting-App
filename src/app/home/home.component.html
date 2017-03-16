@@ -1,0 +1,98 @@
+
+<div class="container">
+
+  <!--Angular ways-->
+
+  
+  <div id=myimg><img [src]="imgLink"/></div>
+  <!--ngModel-->
+  <div><input type=text [(ngModel)]="inpname"></div>
+  <div>{{inpname}}</div>
+   <!--ngModel-->
+
+ <!--ngIf-->   
+<p *ngIf="shownow">I am Angular2</p>
+<!--ngIf-->
+<button (click)="distog()">Toggle view</button>
+ 
+<button (mouseover)="myalert(inpname)" class="btn btn-sm btn-danger">Hover me</button>
+  <!--ngSwitch-->
+            <div [ngSwitch]="color"> 
+                  <p *ngSwitchCase="'red'">Red is shown</p>
+                  <p *ngSwitchCase="'blue'">Blue is shown</p>
+                  <p *ngSwitchDefault>Yellow is shown</p>
+              </div>
+<!--ngSwitch-->
+  
+   <!--ngFor-->
+   <ul>
+              <li *ngFor="let city of cities;let i=index" >
+              {{i+1}}. {{city}}
+              </li>
+              </ul>
+<!--ngFor-->
+
+<!--ngClass-->
+<div [ngClass]="{classOne:cone,classTwo:ctwo}">I am great</div>
+<!--ngClass-->
+
+<!--ngForm-->
+<div id=myform>
+  <h1>The form location</h1>
+<form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="col-sm-6" novalidate>
+        <div class="form-group" >
+<label for="">Name :</label>
+<input class="form-control" type="text" minlength=6 maxlength="10" #nameRef="ngModel" name=name [ngModel]=myName  required>
+<!--this model has some data binding which prefills it with an already defined myname.-->
+     <div *ngIf ="nameRef.errors && (nameRef.dirty||nameRef.touched)" class="alert alert-danger">
+ <div [hidden]="!nameRef.errors.required">Please Enter a name </div>
+ <div [hidden]="!nameRef.errors.minlength">Please enter at least 6 characters </div>
+       </div>
+     
+     
+     </div>
+     
+       <div class="form-group" >
+<label for="">Email :</label>
+<input class="form-control" type="text" name=email ngModel>
+     </div>
+<div ngModelGroup=address> <!--start of address grouping-->
+    
+<div class="form-group" >
+<label for="">Street :</label>
+<input class="form-control" type="text" name=street ngModel>
+     </div>
+       <div class="form-group" >
+<label for="">City:</label>
+<input class="form-control" type="text" name=city ngModel>
+     </div>
+       <div class="form-group" >
+<label for="">Postal Code :</label>
+<input #refPostcode="ngModel" pattern="^[1-9][0-9]{4}$"class="form-control" type="text" name=postalcode ngModel>
+        <div *ngIf ="refPostcode.errors && (refPostcode.dirty||refPostcode.touched)" class="alert alert-danger">
+ <div [hidden]="!refPostcode.errors.pattern">Please enter 5 digit number </div>
+     </div>
+     </div>
+  
+  </div><!--end of address grouping-->
+
+       
+    <button [disabled]="!userForm.form.valid" type=submit class="btn btn-md btn-primary">Submit</button>
+    </form>
+
+
+</div>
+<!--ngForm-->
+
+
+
+
+    
+<!--Angular ways-->
+
+  
+</div>
+
+
+
+
