@@ -4,38 +4,35 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {Routes,RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
+
 import { HomeComponent } from './home/home.component';
-import { ServicesComponent } from './services/services.component';
+
 import { PostsService } from './posts.service';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 // Define the routes
 const routes:Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+     component: HomeComponent
+   
   },
   {
-    path: 'home',
-    component: HomeComponent 
+    path: 'signup',
+    component: SignupComponent 
   },
   {
-    path: 'about',
-    component:AboutComponent
+    path: 'login',
+    component:LoginComponent
   },
-  {
-    path: 'services',
-    component: ServicesComponent 
-  }
+  
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServicesComponent,
-     AboutComponent, 
-    HomeComponent, 
+   HomeComponent, LoginComponent, SignupComponent, 
   ],
   imports: [
     BrowserModule,

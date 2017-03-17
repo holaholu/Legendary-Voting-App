@@ -1,0 +1,37 @@
+<div class="jumbotron text-center myjumbo">
+  <h1>Legendary Votes</h1>
+  <p>Create Free Custom Votes with live results.</p>
+  </div>
+
+<div  class=container>
+ 
+<form #userForm="ngForm" (ngSubmit)="onsubmit()" class="col-sm-12" novalidate>
+
+
+     <div class="form-group" >
+<label for="">Email </label>
+<input class="form-control" type="email" name=email [(ngModel)]=myEmail pattern="^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"  required>
+ <div *ngIf ="nameRef.errors && (nameRef.dirty||nameRef.touched)" id=myred>
+       <div [hidden]="!nameRef.errors.pattern">Please Enter a valid Email address </div>
+       
+             </div>     
+</div>
+       
+<div class="form-group" >
+<label for="">Password </label>
+<input  #refPostcode="ngModel" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"class="form-control" type="text" name=password [(ngModel)]=myPassword required>
+        <div *ngIf ="refPostcode.errors && (refPostcode.dirty||refPostcode.touched)" id=myred>
+ <div [hidden]="!refPostcode.errors.pattern">Please enter a minimum of 6 characters with least 1 alphabet and 1 number </div>
+
+     </div>
+     </div>
+  
+
+
+  <button [disabled]="!userForm.form.valid" type=submit class="btn btn-success btn-sm col-xs-4">Sign up</button>
+  
+
+   
+
+     </form>
+</div>

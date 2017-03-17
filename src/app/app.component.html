@@ -1,18 +1,38 @@
 
-<div class=container>
-  <h1>
-  {{title}}
-</h1>
-<div></div>
-<div id=moveleft>
+<nav class="navbar navbar-default m-nav">
+  <div class="container-fluid ">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a routerLink="/" routerLinkActive="active" class="navbar-brand">Legendary Votes</a>
+    </div>
 
-<nav >
-    <a routerLink="/home" routerLinkActive="active" class="btn btn-large btn-primary">Home</a>
-    <a routerLink="/about" routerLinkActive="active" class="btn btn-large btn-success">About</a>
-    <a routerLink="/services" routerLinkActive="active" class="btn btn-large btn-info">Services</a>
-  </nav>
-</div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/" routerLinkActive="active">Home<span class="sr-only">(current)</span></a></li>
+      
+       
+      </ul>
+       <ul class="nav navbar-nav navbar-right">
+        <li> <a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
+         <li><a routerLink="/login" routerLinkActive="active" >Login</a></li>
+      </ul>
+      
+      
+    </div>
+  </div>
+</nav>
+
 
 <router-outlet></router-outlet>
+
+<hr>
+<div id=myfooter class=text-center>
+<h6><span id=desc>Developed by :</span>&nbsp; <a href="http://www.yomify.com" target=_blank><span id=myname>Yomify</span></a></h6>
+</div>
   
-  </div>
+

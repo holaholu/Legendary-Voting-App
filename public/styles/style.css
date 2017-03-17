@@ -1,17 +1,15 @@
 .myjumbo{
-    background-color:#47A2DE;
-    margin-top:0px;
-    color:white;
-}
-
-.myjumbo{
   background-color: #C8E6CC;
   
     color:#47A2DE;
   
 }
-
-
+.m-nav{
+    margin:0px;
+}
+#myfooter{
+  margin-top:20px;
+}
 #desc{
     color:black;
 }
@@ -19,3 +17,4 @@
 .hompg{
     margin:40px;
 }
+
