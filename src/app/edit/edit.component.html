@@ -1,0 +1,93 @@
+
+
+
+
+
+
+
+<!--Start of logged in section-->
+<div  *ngIf=!notfound>
+<div *ngIf=globals.loggedin >
+
+
+<div class="jumbotron text-center myjumbo">
+  <h1>Legendary Votes Dashboard-Poll Edit</h1>
+  <p> Yea! You are quite active here</p>
+  <p><span><a  class="btn btn-success btn-md"routerLink="/" routerLinkActive="active" >Go Home</a></span>
+ </div>
+
+<div class=col-md-12>
+
+
+
+  <div *ngIf=!showlink>
+<div class=text-center>
+  <h3>Edit the poll below.</h3>
+  </div>
+<div>
+<form #userForm="ngForm" (ngSubmit)="onsubmitpoll()" class="col-sm-12" novalidate>
+
+
+     <div class="form-group" >
+<label for="">Poll Name : </label>
+<input class="form-control" pattern="^[A-Za-z0-9 -?]+$" #nameRef="ngModel" minlength=10 type="text" name=title [(ngModel)]=myTitle  [disabled]=!owner required>
+ <div *ngIf ="nameRef.errors && (nameRef.dirty||nameRef.touched)" id=myred>
+       <div [hidden]="!nameRef.errors.length">Please Enter at least 10 characters </div>
+       <div [hidden]="!nameRef.errors.pattern">Only alphanumeric characters,space and ? are allowed </div>
+
+             </div>     
+</div>
+
+<div class="form-group" >
+<label for="">Options: </label>
+<input *ngIf="trackOption[0]" class="form-control "    name=option0 [(ngModel)]=option[0]  required>
+<input *ngIf="trackOption[1]" class="form-control "    name=option1 [(ngModel)]=option[1]  required>
+<input *ngIf="trackOption[2]"class="form-control "    name=option2 [(ngModel)]=option[2]  required>
+<input *ngIf="trackOption[3]"class="form-control "    name=option3 [(ngModel)]=option[3]  required>
+<input *ngIf="trackOption[4]"class="form-control "    name=option4 [(ngModel)]=option[4]  required>
+<input *ngIf="trackOption[5]"class="form-control "    name=option5 [(ngModel)]=option[5]  required>
+<input *ngIf="trackOption[6]"class="form-control "    name=option6 [(ngModel)]=option[6]  required>
+<input *ngIf="trackOption[7]"class="form-control "    name=option7 [(ngModel)]=option[7]  required>
+<input *ngIf="trackOption[8]"class="form-control "    name=option8 [(ngModel)]=option[8]  required>
+<input *ngIf="trackOption[9]"class="form-control "    name=option9 [(ngModel)]=option[9]  required>
+ 
+<span *ngIf="!trackOption[9]"class="btn btn-sm btn-info addopt" (click)=addOptions()>Add Options</span>
+</div>
+ 
+  <button [disabled]="!userForm.form.valid" type=submit class="btn btn-success btn-sm col-xs-4">Submit</button>
+  
+   </form>
+ </div>
+
+
+
+</div>
+
+
+  <div *ngIf=showlink class=text-center>
+      <h1><span id=congrats>Congratulations!</span></h1>
+    <h3>The updated poll can now be viewed with the link below :</h3>
+    <h4><a href="{{posturl}}">{{posturl}}</a></h4>
+  </div>
+
+
+</div>
+
+</div>
+
+<div *ngIf=!globals.loggedin class=container>
+ <h1>You need to be logged in to edit a Poll</h1>
+ <h3><a href="/login">Click here to Login first</a></h3>
+
+</div>
+
+</div>
+
+<div *ngIf=notfound class=container>
+
+  <h1>This poll does not exist on this database.</h1>
+</div>
+
+
+
+

@@ -17,12 +17,19 @@
       
        
       </ul>
+     
        <ul class="nav navbar-nav navbar-right">
-        <li> <a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
-         <li><a routerLink="/login" routerLinkActive="active" >Login</a></li>
+
+
+
+        <li *ngIf=!globals.loggedin> <a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
+         <li *ngIf=!globals.loggedin><a routerLink="/login" routerLinkActive="active" >Login</a></li>
+         <li *ngIf=globals.loggedin> <a  >Hello {{globals.name}}</a></li>
+         <li *ngIf=globals.loggedin> <a routerLink="/setting" routerLinkActive="active"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></li>
+         <li *ngIf=globals.loggedin (click)=logOut()> <a href="/logout">Logout</a></li>
       </ul>
-      
-      
+  
+
     </div>
   </div>
 </nav>
@@ -30,9 +37,12 @@
 
 <router-outlet></router-outlet>
 
-<hr>
-<div id=myfooter class=text-center>
-<h6><span id=desc>Developed by :</span>&nbsp; <a href="http://www.yomify.com" target=_blank><span id=myname>Yomify</span></a></h6>
-</div>
+<hr class=myfooter>
+<div  class="text-center ">
+<span >
+  <h6><span id=desc>Developed by :</span>&nbsp; <a href="http://www.yomify.com" target=_blank><span id=myname>Yomify</span></a></h6>
+
+  
+  </span></div>
   
 

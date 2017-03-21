@@ -1,0 +1,75 @@
+<div class="jumbotron text-center myjumbo">
+  <h1>Legendary Votes</h1>
+  <p>Click the corresponding button to vote for your choice in the Poll .</p>
+  </div>
+
+<div  class=container>
+   
+
+<div *ngIf=!votestatus>
+
+<div *ngFor="let poll of mypoll" >
+<div class=col-sm-6>
+   <h3><span id=titlelabel>Poll Title :</span></h3>
+  <h1><span id=polltitle>{{ poll.title.split("_").join(" ") }}</span></h1>
+  <h4><span id=author>By {{poll.author}}</span></h4>
+</div>
+
+<div class=col-sm-6>
+ <form #myForm="ngForm" (ngSubmit)="onsubmit()" class="col-sm-12" novalidate id=optiondiv>
+        <div *ngFor="let option of poll.options"  class=text-center>
+         
+            <div class=form-group>
+              <input type="radio" name="optionsRadios" [(ngModel)]=myoption  value={{option}} >
+         <label for="optionsRadios">{{ option }}</label>  
+              </div>  
+         
+             
+       </div>
+ 
+
+   <button  type=submit class="col-sm-offset-3 col-xs-6 btn btn-lg btn-success votep ">Vote</button>
+
+     
+ </form>
+
+<div class=row *ngIf=globals.loggedin>
+  <span  id=editbut class="col-sm-offset-3 col-xs-6 btn btn-lg btn-info  "><a routerLink="/{{poll.author}}/{{poll.title}}/edit" routerLinkActive="active">Add Options</a></span>
+
+</div>
+</div>
+
+  
+  
+</div>
+</div>
+
+
+
+<div *ngIf=votestatus>
+
+  <div *ngFor="let poll of mypoll" > <!--Poll used to allow use of split and join-->
+<h1>{{ poll.title.split("_").join(" ") }}</h1>
+</div>
+
+
+
+   <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)" *ngIf=chart>
+  </canvas>    
+</div>
+
+<div *ngIf=notfound class=container>
+
+  <h1>This poll does not exist on this database</h1>
+</div>
+
+
+</div>
+

@@ -4,12 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {Routes,RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-
+import { Globals } from './globals';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { HomeComponent } from './home/home.component';
 
 import { PostsService } from './posts.service';
-import { LoginComponent } from './login/login.component';
+
 import { SignupComponent } from './signup/signup.component';
+
+import { LoginComponent } from './login/login.component';
+import { VotepollComponent } from './votepoll/votepoll.component';
+import { EditComponent } from './edit/edit.component';
 
 // Define the routes
 const routes:Routes = [
@@ -26,21 +32,29 @@ const routes:Routes = [
     path: 'login',
     component:LoginComponent
   },
-  
+  {
+    path: ':author/:mytitle',
+    component:VotepollComponent
+  },{
+    path: ':author/:mytitle/edit',
+    component:EditComponent
+  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-   HomeComponent, LoginComponent, SignupComponent, 
+   HomeComponent, SignupComponent,  LoginComponent, VotepollComponent, EditComponent, 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ChartsModule,
+    FlashMessagesModule,
     RouterModule.forRoot(routes) // Add routes to the app
   ],
-  providers: [PostsService], // Add the posts service
+  providers: [PostsService,Globals], // Add the posts service
   bootstrap: [AppComponent]
 })
 export class AppModule { }

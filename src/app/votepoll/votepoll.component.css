@@ -1,0 +1,39 @@
+#titlelabel{
+    color:black;
+}
+#polltitle{
+    font-size:1.5em;
+}
+
+
+#author{
+    margin-top:50px;
+}
+#optiondiv{
+
+    margin-top:50px;
+}
+
+#editbut{
+    margin-top:50px;
+}
+
+
+label{
+    padding:5px;
+    color:red;
+    font-family:corbel,sans-serif;
+  font-size:1.5em;
+    margin: 10px;
+}
+.voteb{
+    padding-top:50px;
+}
+input[type="radio"] {
+  /*margin-top: -1px;
+  vertical-align: middle;*/
+
+  vertical-align: middle;
+    padding: 10px;
+    margin: 10px;
+}

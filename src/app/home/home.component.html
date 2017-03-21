@@ -1,5 +1,7 @@
 
 
+<div *ngIf=!this.globals.loggedin>
+
 <div class="jumbotron text-center myjumbo">
   <h1>Legendary Votes</h1>
   <p>Create Free Custom Votes with live results.</p>
@@ -23,6 +25,116 @@ are using. Our responsive designs do just that.</div>
 
 
 </div>
+
+</div>
+
+<!--End of not logged in section-->
+
+
+<!--Start of logged in section-->
+
+<div *ngIf=(this.globals.loggedin)>
+
+
+<div class="jumbotron text-center myjumbo">
+  <h1>Legendary Votes Dashboard</h1>
+  <p> What would you love to do today?</p>
+  <p><span><a  class="btn btn-success btn-md" (click)=newPolls()>New Poll</a></span>
+  <span><a  class="btn btn-info btn-md" (click)=oldPolls()>My Polls</a></span></p>
+</div>
+
+<div class=col-md-12>
+
+<div *ngIf=newPoll>
+
+  <div *ngIf=!showlink>
+<div class=text-center>
+  <h3>Create A New Poll.</h3>
+  </div>
+
+<form #userForm="ngForm" (ngSubmit)="onsubmitpoll()" class="col-sm-12" novalidate>
+
+
+     <div class="form-group" >
+<label for="">Poll Name : </label>
+<input class="form-control" pattern="^[A-Za-z0-9 -?]+$" #nameRef="ngModel" minlength=10 type="text" name=title [(ngModel)]=myTitle placeholder="Which team is the best?" required>
+ <div *ngIf ="nameRef.errors && (nameRef.dirty||nameRef.touched)" id=myred>
+       <div [hidden]="!nameRef.errors.length">Please Enter at least 10 characters </div>
+       <div [hidden]="!nameRef.errors.pattern">Only alphanumeric characters,space and ? are allowed </div>
+
+             </div>     
+</div>
+
+<div class="form-group" >
+<label for="">Options: </label>
+<input *ngIf="trackOption[0]" class="form-control "    name=option0 [(ngModel)]=option[0] placeholder="Chicago Cubs" required>
+<input *ngIf="trackOption[1]" class="form-control "    name=option1 [(ngModel)]=option[1] placeholder="Boston Red Sox" required>
+<input *ngIf="trackOption[2]"class="form-control "    name=option2 [(ngModel)]=option[2] placeholder="New Option" required>
+<input *ngIf="trackOption[3]"class="form-control "    name=option3 [(ngModel)]=option[3] placeholder="New Option" required>
+<input *ngIf="trackOption[4]"class="form-control "    name=option4 [(ngModel)]=option[4] placeholder="New Option" required>
+<input *ngIf="trackOption[5]"class="form-control "    name=option5 [(ngModel)]=option[5] placeholder="New Option" required>
+<input *ngIf="trackOption[6]"class="form-control "    name=option6 [(ngModel)]=option[6] placeholder="New Option" required>
+<input *ngIf="trackOption[7]"class="form-control "    name=option7 [(ngModel)]=option[7] placeholder="New Option" required>
+<input *ngIf="trackOption[8]"class="form-control "    name=option8 [(ngModel)]=option[8] placeholder="New Option" required>
+<input *ngIf="trackOption[9]"class="form-control "    name=option9 [(ngModel)]=option[9] placeholder="New Option" required>
+ 
+<span *ngIf="!trackOption[9]"class="btn btn-sm btn-info addopt" (click)=addOptions()>Add Options</span>
+</div>
+ 
+  <button [disabled]="!userForm.form.valid" type=submit class="btn btn-success btn-sm col-xs-4">Submit</button>
+  
+
+   
+
+     </form>
+
+  </div>
+
+  <div *ngIf=showlink class=text-center>
+      <h1><span id=congrats>Congratulations!</span></h1>
+    <h3>Your poll can now be viewed with the link below :</h3>
+    <h4><a href="{{posturl}}">{{posturl}}</a></h4>
+  </div>
+
+
+</div>
+
+
+
+<div *ngIf=oldPoll>
+<div class=text-center>
+  <h3> Your Current Polls</h3>
+  </div>
+
+<div *ngFor="let poll of polllist" class="btn-group btn-group-justified">
+  <a  class="btn btn-success" href="/{{poll.author}}/{{poll.title}}">{{ poll.title.split("_").join(" ") }}</a>
+  <a  class="btn btn-info" (click)=myedit(poll.author,poll.title) >Edit</a>
+  <a  class="btn btn-danger" (click)=deletepoll(poll._id) >Delete</a>
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
 
 
 
