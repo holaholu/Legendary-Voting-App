@@ -122,7 +122,7 @@ app.post("/createpoll",function(req,res){
            res.send(err.message);
          
       }else {
-       res.send("http://localhost:3000/"+poll.author+"/"+poll.title);
+       res.send("https://legendaryvote.herokuapp.com/"+poll.author+"/"+poll.title);
       }
   });
 })
@@ -140,7 +140,7 @@ app.post("/editpoll",function(req,res){
             if(err){
               console.log(err.message);
             } else {
-                  res.send("http://localhost:3000/"+realpoll.author+"/"+realpoll.title);
+                  res.send("https://legendaryvote.herokuapp.com/"+realpoll.author+"/"+realpoll.title);
               
             }
           })
@@ -238,7 +238,7 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
+var port = process.env.PORT || '3000';
 
 
 
