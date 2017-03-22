@@ -11,7 +11,7 @@ import { ChartsModule } from 'ng2-charts';
 })
 export class VotepollComponent implements OnInit {
 private sub: any; chart:boolean=false;
- author: string;notfound:boolean=false;
+ author: string;notfound:boolean=false;keepname;
  mytitle:string;mypoll;errorMsg;votedpoll;
  votetitle;voteauthor;votecount;voteoptions;
  myoption;votestatus:boolean=false;
@@ -61,7 +61,7 @@ for (var i=0; i<this.mypoll[0].options.length;i++){     //Increase count after v
 
 //Send to database for update
 
-this.postsService.editPoll2(this.mypoll[0].title,this.mypoll[0].author,this.mypoll[0].options,this.mypoll[0].count,this.mypoll[0]._id)
+this.postsService.editPoll2(this.mypoll[0].title,this.keepname,this.mypoll[0].options,this.mypoll[0].count,this.mypoll[0]._id)
        .subscribe(res => {
       this.votedpoll = res, posterror => this.errorMsg=posterror ;});
 
@@ -99,14 +99,16 @@ this.chart=true;
       this.mypoll = res, posterror => this.errorMsg=posterror ;});
 
       setTimeout(()=> {
-         if(this.mypoll.length<1){
+         if(this.mypoll==undefined){
         this.notfound=true;
+       
       }else{
-        if(this.mypoll[0].author=this.globals.name){
+        if(this.mypoll[0].author==this.globals.name){
           this.myoption="..."
           this.onsubmit();
         }
       }
+      this.keepname=this.mypoll[0].author
       }, 1000);
  }
 
