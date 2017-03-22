@@ -34,7 +34,7 @@ setTimeout(()=> {
      this.globals.loggedin=true;
   }
   
-}, 1000);
+}, 2000);
   
    
 
