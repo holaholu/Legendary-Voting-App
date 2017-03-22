@@ -27,7 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine","ejs");
 //public files
 app.use (express.static("public"));
-app.use (express.static("node_modules"));
+
+app.use('/scripts', express.static(__dirname + '/node_modules/bootstrap/dist/'));// for scripts linked to node_modules
 //app.use(cookieParser());
 
 var Voteuser  = require("./models/voteuser");
