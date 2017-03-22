@@ -28,6 +28,7 @@ app.set("view engine","ejs");
 //public files
 app.use (express.static("public"));
 app.use (express.static("node_modules"));
+app.use ('/scripts',express.static("node_modules"));
 
 //app.use(cookieParser());
 
@@ -161,7 +162,7 @@ app.post("/createpoll",function(req,res){
 
 app.post("/editpoll",function(req,res){
        
-  Poll.findByIdAndUpdate(req.body.id,{title:req.body.title,author:req.user.username,options:req.body.options,count:req.body.count},function(err,poll){
+  Poll.findByIdAndUpdate(req.body.id,{title:req.body.title,author:req.body.creator,options:req.body.options,count:req.body.count},function(err,poll){
       if (err){
            res.send(err.message);
          
