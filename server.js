@@ -146,7 +146,7 @@ Voteuser.findByIdAndRemove(req.user._id,function(err){
 
 app.post("/createpoll",function(req,res){
        
-  Poll.create({title:req.body.title,author:req.body.creator,options:req.body.options,count:req.body.count},function(err,poll){
+  Poll.create({title:req.body.title,author:req.user.username,options:req.body.options,count:req.body.count},function(err,poll){
       if (err){
            res.send(err.message);
          
@@ -160,7 +160,7 @@ app.post("/createpoll",function(req,res){
 
 app.post("/editpoll",function(req,res){
        
-  Poll.findByIdAndUpdate(req.body.id,{title:req.body.title,author:req.body.creator,options:req.body.options,count:req.body.count},function(err,poll){
+  Poll.findByIdAndUpdate(req.body.id,{title:req.body.title,author:req.user.username,options:req.body.options,count:req.body.count},function(err,poll){
       if (err){
            res.send(err.message);
          
