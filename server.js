@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine","ejs");
 //public files
 app.use (express.static("public"));
-app.use (express.static("node_modules"));
-app.use ('/scripts',express.static("node_modules"));
+app.use (express.static("node_modules/chart.js/dist"));
+app.use ('/scripts',express.static("/node_modules/chart.js/dist/"));
 
 //app.use(cookieParser());
 
