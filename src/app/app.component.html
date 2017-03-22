@@ -25,7 +25,7 @@
         <li *ngIf=!globals.loggedin> <a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
          <li *ngIf=!globals.loggedin><a routerLink="/login" routerLinkActive="active" >Login</a></li>
          <li *ngIf=globals.loggedin> <a  >Hello {{globals.name}}</a></li>
-         <li *ngIf=globals.loggedin> <a routerLink="/setting" routerLinkActive="active"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></li>
+         <li *ngIf=globals.loggedin> <a routerLink="/settings" routerLinkActive="active"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></li>
          <li *ngIf=globals.loggedin (click)=logOut()> <a href="/logout">Logout</a></li>
       </ul>
   

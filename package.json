@@ -4,16 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
-  
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.0.0-rc.2",
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
     "@angular/core": "^2.4.0",
@@ -41,7 +39,7 @@
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
-    
+    "@angular/cli": "1.0.0-rc.2",
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/jquery": "^2.0.41",
@@ -59,9 +57,5 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.0.0"
-  },
-  "engines": {
-  "node": "7.7.2",
-  "npm": "4.1.2"
-}
+  }
 }

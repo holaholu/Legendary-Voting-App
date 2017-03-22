@@ -1,0 +1,39 @@
+<div class="jumbotron text-center myjumbo">
+  <h1>Legendary Votes</h1>
+  <p>Change your password below</p>
+  </div>
+
+<div  class=container>
+ <flash-messages></flash-messages>
+<form #userForm="ngForm" (ngSubmit)="onsubmit()" class="col-sm-12" novalidate >
+
+
+  
+       
+<div class="form-group" >
+<label for="">Password </label>
+<input  #refPassword="ngModel" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"class="form-control" type="text" name=password [(ngModel)]=myPassword1 required>
+        <div *ngIf ="refPassword.errors && (refPassword.dirty||refPassword.touched)" id=myred>
+ <div [hidden]="!refPassword.errors.pattern">Please enter a minimum of 6 characters with least 1 alphabet and 1 number </div>
+
+     </div>
+     </div>
+  
+<div class="form-group" >
+<label for="">Confirm Password </label>
+<input  #refPostcode="ngModel" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"class="form-control" type="text" name=password2 [(ngModel)]=myPassword2 required>
+        <div *ngIf ="refPostcode.errors && (refPostcode.dirty||refPostcode.touched)" id=myred>
+ <div [hidden]="!refPostcode.errors.pattern">Please enter a minimum of 6 characters with least 1 alphabet and 1 number </div>
+
+     </div>
+     </div>
+
+
+  <button [disabled]="!userForm.form.valid" type=submit class="btn btn-success btn-sm col-xs-4">Change</button>
+  
+
+   
+
+     </form>
+
+</div>

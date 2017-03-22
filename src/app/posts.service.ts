@@ -41,6 +41,10 @@ export class PostsService {
 
   }
 
+changePass(name,password){
+    return this.http.post('/changepass',{username:name,password:password})
+      .map(res => res.text()).catch(this._errorHandler);
+  }
   // Sign user up and return username
   signUp(myName,myPassword,myEmail) {
     return this.http.post('/signupnow',{name:myName,username:myEmail,password:myPassword})

@@ -8,14 +8,12 @@ import { Globals } from './globals';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { HomeComponent } from './home/home.component';
-
 import { PostsService } from './posts.service';
-
 import { SignupComponent } from './signup/signup.component';
-
 import { LoginComponent } from './login/login.component';
 import { VotepollComponent } from './votepoll/votepoll.component';
 import { EditComponent } from './edit/edit.component';
+import { SettingsComponent } from './settings/settings.component';
 
 // Define the routes
 const routes:Routes = [
@@ -35,16 +33,21 @@ const routes:Routes = [
   {
     path: ':author/:mytitle',
     component:VotepollComponent
-  },{
+  },
+  {
     path: ':author/:mytitle/edit',
     component:EditComponent
+  },
+  {
+    path: 'settings',
+    component:SettingsComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-   HomeComponent, SignupComponent,  LoginComponent, VotepollComponent, EditComponent, 
+   HomeComponent, SignupComponent,  LoginComponent, VotepollComponent, EditComponent, SettingsComponent, 
   ],
   imports: [
     BrowserModule,

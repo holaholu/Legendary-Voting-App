@@ -115,6 +115,35 @@ app.post("/signupnow",function(req,res){
  
 })
 
+
+
+
+app.post("/changepass",function(req,res){
+  var namestore=req.user.name;
+       
+Voteuser.findByIdAndRemove(req.user._id,function(err){
+   if(err){
+     console.log(err.message);
+   }else {
+     
+   }
+
+})
+
+  Voteuser.register(new Voteuser({username:req.body.username,name:namestore}),req.body.password,function(err,user){
+      if (err){
+           res.send(err.message);
+         
+      }else {
+        passport.authenticate("local")(req,res,function(){
+              res.send(req.user.username);
+               console.log(req.user);
+       });
+      }
+  });
+ 
+})
+
 app.post("/createpoll",function(req,res){
        
   Poll.create({title:req.body.title,author:req.body.creator,options:req.body.options,count:req.body.count},function(err,poll){
